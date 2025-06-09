@@ -33,10 +33,10 @@ async function getSandraReply(message) {
   return data.choices[0].message.content.trim();
 }
 
-app.listen(3001, async () => {
+app.listen(process.env.PORT || 3001, async () => {
   await client.connect();
   db = client.db('sandra_chat');
-  console.log('Backend running on port 3001');
+  console.log('Backend running on port ' + (process.env.PORT || 3001));
 });
 
 app.post('/api/validate-token', async (req, res) => {
